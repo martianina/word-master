@@ -7,7 +7,7 @@ Heavily inspired by [Wordle](https://www.powerlanguage.co.uk/wordle/), Word Mast
 ## Rules
 
 You have 6 guesses to guess the correct word.
-Each guess can be any valid word.
+Each guess can be any valid word. 
 
 After submitting a guess, the letters will turn gray, green, or yellow.
 
