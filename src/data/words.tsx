@@ -1,4 +1,4 @@
-const words = {
+const words: { [key: string]: boolean } = {
   aahed: true,
   aalii: true,
   aargh: true,
@@ -6680,6 +6680,7 @@ const words = {
   roans: true,
   roars: true,
   roast: true,
+  roate: true,
   robed: true,
   robes: true,
   robin: true,
@@ -7467,6 +7468,7 @@ const words = {
   soaks: true,
   soaps: true,
   soapy: true,
+  soare: true,
   soars: true,
   soave: true,
   sobas: true,

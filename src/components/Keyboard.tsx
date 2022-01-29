@@ -1,8 +1,22 @@
-import { keyboardLetters, status, letters } from './constants'
+import { keyboardLetters, status, letters } from '../constants'
 import { useEffect, useCallback } from 'react'
 
-const Keyboard = ({ letterStatuses, addLetter, onEnterPress, onDeletePress, gameDisabled }) => {
-  const getKeyStyle = (letter) => {
+type Props = {
+  letterStatuses: { [key: string]: string }
+  gameDisabled: boolean
+  onDeletePress: () => void
+  onEnterPress: () => void
+  addLetter: any
+}
+
+const Keyboard = ({
+  letterStatuses,
+  addLetter,
+  onEnterPress,
+  onDeletePress,
+  gameDisabled,
+}: Props) => {
+  const getKeyStyle = (letter: string) => {
     switch (letterStatuses[letter]) {
       case status.green:
         return 'bg-n-green text-gray-50'
@@ -11,11 +25,11 @@ const Keyboard = ({ letterStatuses, addLetter, onEnterPress, onDeletePress, game
       case status.gray:
         return 'bg-n-gray text-gray-50'
       default:
-        return 'text-primary'
+        return 'text-primary dark:text-primary-dark'
     }
   }
 
-  const onKeyButtonPress = (letter) => {
+  const onKeyButtonPress = (letter: string) => {
     letter = letter.toLowerCase()
     window.dispatchEvent(
       new KeyboardEvent('keydown', {
@@ -49,13 +63,13 @@ const Keyboard = ({ letterStatuses, addLetter, onEnterPress, onDeletePress, game
   }, [handleKeyDown])
 
   return (
-    <div className="w-full flex flex-col items-center mb-3 select-none">
+    <div className="w-full flex flex-col items-center mb-3 select-none h-auto justify-end">
       {keyboardLetters.map((row, idx) => (
         <div key={idx} className="w-full flex justify-center my-[5px]">
           {idx === 2 && (
             <button
               onClick={onEnterPress}
-              className="h-10 xxs:h-14 font-medium w-12 px-1 text-xs mx-[3.5px] rounded nm-flat-background-sm text-primary"
+              className="h-10 xxs:h-14 w-12 px-1 text-xs font-medium mx-[3.5px] rounded nm-flat-background-sm dark:nm-flat-background-dark-sm text-primary dark:text-primary-dark"
             >
               ENTER
             </button>
@@ -64,7 +78,7 @@ const Keyboard = ({ letterStatuses, addLetter, onEnterPress, onDeletePress, game
             <button
               onClick={() => onKeyButtonPress(letter)}
               key={letter}
-              className="h-10 font-medium xxs:h-14 w-[2rem] sm:w-10 mx-[3.5px] text-sm rounded-[4px] nm-flat-background-sm"
+              className="h-10 xxs:h-14 w-[2rem] sm:w-10 mx-[3.5px] text-sm font-medium rounded-[4px] nm-flat-background-sm dark:nm-flat-background-dark-sm"
             >
               <div
                 className={`h-full w-full rounded-[3px] flex items-center justify-center ${getKeyStyle(
@@ -78,7 +92,7 @@ const Keyboard = ({ letterStatuses, addLetter, onEnterPress, onDeletePress, game
           {idx === 2 && (
             <button
               onClick={onDeletePress}
-              className="h-10 xxs:h-14 w-12 flex items-center justify-center nm-flat-background-sm text-primary mx-[3.5px] text-sm  rounded"
+              className="h-10 xxs:h-14 w-12 flex items-center justify-center nm-flat-background-sm dark:nm-flat-background-dark-sm text-primary dark:text-primary-dark mx-[3.5px] text-sm  rounded"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

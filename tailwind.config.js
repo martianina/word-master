@@ -1,7 +1,8 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  content: ['./src/**/*.{js,jsx}'],
+  darkMode: 'class',
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     screens: {
       xxs: '321px',
@@ -11,9 +12,11 @@ module.exports = {
     extend: {
       colors: {
         background: 'hsl(231, 16%, 92%)',
-        primary: '#323549',
+        primary: 'hsl(231, 16%, 25%)',
+        'background-dark': 'hsl(231, 16%, 25%)',
+        'primary-dark': 'hsl(231, 16%, 92%)',
         'n-green': 'hsl(110, 33%, 50%)',
-        'n-gray': 'hsl(231, 12%, 45%)',
+        'n-gray': 'hsl(231, 16%, 45%)',
       },
     },
     neumorphismSize: {
